@@ -12,15 +12,25 @@ let todos = [
 
 app.get('/', (request, response) => response.send({items: todos}))
 
-app.post('/add', (request, response) => {
+app.post('/add', function (request, response) {
+        if (request.body && request.body.item !== "") {
+            todos.push(request.body);
+            console.log(todos);
+            response.send({ items: todos });
+        } else {
+            response.status(400).send({ message: "Todo item must have a title" });
+        }
+
+    });
+
+app.delete('/delete', function (request, response) {
     if (request.body && request.body.item !== "") {
-        todos.push(request.body);
+        todos.splice(request.body);
         console.log(todos);
-        response.send({items: todos});
+        response.send({ items: todos });
     } else {
-        response.status(400).send({message: "Todo item must have a title"})
+        response.status(400).send({ message: "Todo item not found" });
     }
-    
-});
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

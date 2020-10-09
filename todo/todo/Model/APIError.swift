@@ -2,8 +2,7 @@
 //  APIError.swift
 //  todo
 //
-//  Created by hax0r-MBP on 8/16/19.
-//  Copyright © 2019 Devslopes. All rights reserved.
+//  Created by slava bily on 05.10.2020.
 //
 
 import Foundation

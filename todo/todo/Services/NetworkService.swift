@@ -134,5 +134,6 @@ class NetworkService {
         } catch {
             onError(error.localizedDescription)
         }
+        
     }
 }

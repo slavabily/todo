@@ -25,7 +25,7 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         getTodos()
         
         //for test purpose
-        NetworkService.shared.deleteTodo(todo: Todo(item: "Buy eggs", priority: 1)) { (todos) in
+        NetworkService.shared.deleteTodo(todo: Todo(item: "Take out trash", priority: 0)) { (todos) in
             self.todos = todos.items
             self.todoTable.reloadData()
         } onError: { (errorMessage) in

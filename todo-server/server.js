@@ -25,7 +25,12 @@ app.post('/add', function (request, response) {
 
 app.delete('/delete', function (request, response) {
     if (request.body && request.body.item !== "") {
-        todos.splice(request.body);
+        for (var i = 0; i < todos.length; i++) {
+            if (todos[i] !== request.body) {
+                todos.splice(i, 1);
+                console.log(todos)
+            }
+        }
         console.log(todos);
         response.send({ items: todos });
     } else {

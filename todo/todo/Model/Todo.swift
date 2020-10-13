@@ -14,4 +14,5 @@ struct  Todos: Codable {
 struct Todo: Codable {
     let item: String
     let priority: Int
+    let index: Int?
 }

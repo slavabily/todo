@@ -25,7 +25,7 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         getTodos()
         
         //for test purpose
-        NetworkService.shared.deleteTodo(todo: Todo(item: "Take out trash", priority: 0)) { (todos) in
+        NetworkService.shared.deleteTodo(todo: Todo(item: "Take out trash", priority: 0, index: 0)) { (todos) in
             self.todos = todos.items
             self.todoTable.reloadData()
         } onError: { (errorMessage) in
@@ -45,6 +45,13 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
 
     }
+    
+    
+    func deleteTodo(at index: Int) {
+         
+         
+    }
+    
 
     @IBAction func addTodo(_ sender: Any) {
         
@@ -52,7 +59,7 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             //show error "you must enter todo item"
             return
         }
-        let todo = Todo(item: todoItem, priority: prioritySegment.selectedSegmentIndex)
+        let todo = Todo(item: todoItem, priority: prioritySegment.selectedSegmentIndex, index: nil)
         
         NetworkService.shared.addTodo(todo: todo) { (todos) in
             self.todoItemTxt.text = ""
@@ -85,5 +92,21 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
+    //MARK: Deletion
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteTodo(at: indexPath.row)
+            getTodos()
+        }
+    }
 }
 

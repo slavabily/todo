@@ -24,13 +24,14 @@ app.post('/add', function (request, response) {
     });
 
 app.delete('/delete', function (request, response) {
-    if (request.body && request.body.item !== "") {
-        for (var i = 0; i < todos.length; i++) {
-            if (todos[i] !== request.body) {
-                todos.splice(i, 1);
-                console.log(todos)
-            }
-        }
+    if (request.body && request.body.index !== "") {
+        // for (var i = 0; i < todos.length; i++) {
+        //     if (todos[i].item === request.body.item) {
+        //         todos.splice(i, 1);
+        //         console.log(todos)
+        //     }
+        // }
+        todos.splice(request.body.index, 1)
         console.log(todos);
         response.send({ items: todos });
     } else {

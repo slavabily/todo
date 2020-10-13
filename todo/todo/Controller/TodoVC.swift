@@ -86,7 +86,7 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 50
     }
     
-    //MARK: Deletion
+    //MARK: Deletion of items
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

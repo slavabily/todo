@@ -5,9 +5,9 @@ let port = 3003;
 app.use(bodyParser.json());
 
 let todos = [
-    {item: "Take out trash", priority: 0},
-    {item: "Buy eggs", priority: 1},
-    {item: "Clean the house", priority: 2}
+    // {item: "Take out trash", priority: 0},
+    // {item: "Buy eggs", priority: 1},
+    // {item: "Clean the house", priority: 2}
 ]
 
 app.get('/', (request, response) => response.send({items: todos}))
@@ -25,12 +25,6 @@ app.post('/add', function (request, response) {
 
 app.delete('/delete', function (request, response) {
     if (request.body && request.body.index !== "") {
-        // for (var i = 0; i < todos.length; i++) {
-        //     if (todos[i].item === request.body.item) {
-        //         todos.splice(i, 1);
-        //         console.log(todos)
-        //     }
-        // }
         todos.splice(request.body.index, 1)
         console.log(todos);
         response.send({ items: todos });

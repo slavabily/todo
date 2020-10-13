@@ -23,16 +23,6 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         todoTable.dataSource = self
         
         getTodos()
-        
-        //for test purpose
-        NetworkService.shared.deleteTodo(todo: Todo(item: "Take out trash", priority: 0, index: 0)) { (todos) in
-            self.todos = todos.items
-            self.todoTable.reloadData()
-        } onError: { (errorMessage) in
-            //show any errors to user on DELETE
-            debugPrint(errorMessage)
-        }
-
     }
     
     func getTodos() {
@@ -43,16 +33,21 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             //show alert to user
             debugPrint(errorMessage)
         }
-
     }
-    
     
     func deleteTodo(at index: Int) {
-         
-         
+        var todo = todos[index]
+        todo.index = index
+        
+        NetworkService.shared.deleteTodo(todo: todo) { (todos) in
+            self.todos = todos.items
+            self.todoTable.reloadData()
+        } onError: { (errorMessage) in
+            //show error alert to user
+            debugPrint(errorMessage)
+        }
     }
     
-
     @IBAction func addTodo(_ sender: Any) {
         
         guard let todoItem = todoItemTxt.text else {
@@ -69,7 +64,6 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             //show any errors to user on POST
             debugPrint(errorMessage)
         }
-
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -14,6 +14,7 @@ class TodoCell: UITableViewCell {
     
     func updateCell(todo: Todo) {
         itemLbl.text = todo.item
+        priorityView.layer.cornerRadius = priorityView.frame.size.height / 2
         
         switch todo.priority {
         case 0:

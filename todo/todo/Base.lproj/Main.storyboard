@@ -49,11 +49,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmW-7g-cQF">
-                                                    <rect key="frame" x="271" y="15.5" width="40" height="40"/>
+                                                    <rect key="frame" x="281" y="20.5" width="30" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="B4P-HQ-2a5"/>
-                                                        <constraint firstAttribute="height" constant="40" id="bzn-UA-nps"/>
+                                                        <constraint firstAttribute="width" constant="30" id="B4P-HQ-2a5"/>
+                                                        <constraint firstAttribute="height" constant="30" id="bzn-UA-nps"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -76,7 +76,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="c8V-Du-n5n"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-jr-FKa">

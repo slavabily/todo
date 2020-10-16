@@ -27,6 +27,7 @@ class TodoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func getTodos() {
         NetworkService.shared.getTodos { (todos) in
+            print(todos.items)
             self.todos = todos.items
             self.todoTable.reloadData()
         } onError: { (errorMessage) in

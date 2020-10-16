@@ -9,15 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var todos = [Todo]()
+    @ObservedObject var ns = NetworkService()
+    
+//    @State var todos = [Todo]()
     
     var body: some View {
         VStack {
             Text("todo UI")
                 .font(.headline)
             List {
-                ForEach(todos) { (item) in
-                    Text(item.item)
+                ForEach(0..<ns.todos.items.count, id: \.self) {
+                    Text(ns.todos.items[$0].item)
                 }
                 
             }
@@ -30,7 +32,7 @@ struct ContentView: View {
     func getTodos() {
         NetworkService.shared.getTodos { (todos) in
             print(todos.items)
-            self.todos = todos.items
+            self.ns.todos.items = todos.items
         } onError: { (errorMessage) in
             //show error to user
             debugPrint(errorMessage)

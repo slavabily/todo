@@ -8,6 +8,27 @@
 import Foundation
 
 class NetworkService: ObservableObject {
+    
+    struct  Todos: Codable {
+        var items: Array<Todo>
+    }
+
+    struct Todo: Codable, Identifiable {
+        let id: UUID?
+        
+        let item: String
+        let priority: Int
+        var index: Int?
+    }
+    
+    struct APIError: Codable {
+        let message: String
+    }
+    
+    @Published var todos = Todos(items: items)
+    
+    static var items = [Todo]()
+    
     static let shared = NetworkService()
     
     let URL_BASE = "http://localhost:3003"

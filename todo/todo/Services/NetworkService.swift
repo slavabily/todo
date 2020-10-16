@@ -128,12 +128,10 @@ class NetworkService {
                     }
                 }
             }
-            
             task.resume()
             
         } catch {
             onError(error.localizedDescription)
         }
-        
     }
 }

@@ -5,12 +5,15 @@ let port = 3003;
 app.use(bodyParser.json());
 
 let todos = [
-    // {item: "Take out trash", priority: 0},
-    // {item: "Buy eggs", priority: 1},
-    // {item: "Clean the house", priority: 2}
+    {item: "Take out trash", priority: 0},
+    {item: "Buy eggs", priority: 1},
+    {item: "Clean the house", priority: 2}
 ]
 
-app.get('/', (request, response) => response.send({items: todos}))
+app.get('/', (request, response) => {
+    response.send({items: todos});
+    console.log(todos);
+})
 
 app.post('/add', function (request, response) {
         if (request.body && request.body.item !== "") {

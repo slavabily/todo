@@ -11,17 +11,18 @@ struct ContentView: View {
     
     @ObservedObject var ns = NetworkService()
     
-//    @State var todos = [Todo]()
-    
     var body: some View {
         VStack {
             Text("todo UI")
                 .font(.headline)
             List {
-                ForEach(0..<ns.todos.items.count, id: \.self) {
-                    Text(ns.todos.items[$0].item)
-                }
                 
+                ForEach(0..<ns.todos.items.count, id: \.self) {
+                    TodoCell(item: ns.todos.items[$0].item,
+                             priority: ns.todos.items[$0].priority
+                    )
+                }
+                    
             }
             .onAppear {
                 getTodos()
@@ -41,7 +42,8 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
+    static var previews: some View {     
         ContentView()
     }
 }
+

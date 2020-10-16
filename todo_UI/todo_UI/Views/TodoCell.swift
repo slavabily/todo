@@ -9,26 +9,34 @@ import SwiftUI
 
 struct TodoCell: View {
     
-    @State private var item = "Clean the house"
+    var item: String
+    var priority: Int
     
     var body: some View {
         HStack {
-            TextField("", text: $item)
+            Text(item)
                 .font(.headline)
-                .frame(width: 300, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: 300, alignment: .leading)
             
-            Spacer(minLength: 50)
-                
-            Circle()
+            switch priority {
+            case 0: Circle()
                 .foregroundColor(.red)
-                
+            case 1: Circle()
+                .foregroundColor(.orange)
+            default: Circle()
+                .foregroundColor(.yellow)
+            }
+            
+            
+            
         }
         
     }
 }
 
+
 struct TodoCell_Previews: PreviewProvider {
     static var previews: some View {
-        TodoCell()
+        TodoCell(item: "Clean the house", priority: 1)
     }
 }

@@ -8,10 +8,12 @@
 import Foundation
 
 struct  Todos: Codable {
-    let items: Array<Todo>
+    var items: Array<Todo>
 }
 
-struct Todo: Codable {
+struct Todo: Codable, Identifiable {
+    let id: UUID?
+    
     let item: String
     let priority: Int
     var index: Int?

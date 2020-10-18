@@ -11,8 +11,7 @@ struct  Todos: Codable {
     var items: Array<Todo>
 }
 
-struct Todo: Codable, Identifiable {
-    let id: UUID?
+struct Todo: Codable {
     
     let item: String
     let priority: Int

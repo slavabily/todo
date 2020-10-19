@@ -12,6 +12,9 @@ struct ContentView: View {
     @ObservedObject var ns = NetworkService()
     
     @State var todoItem: String
+    @State private var selectedPriority = 0
+    
+    var priorities = ["Low", "Medium", "High"]
     
     var body: some View {
         VStack {
@@ -23,6 +26,13 @@ struct ContentView: View {
                 addTodo()
             })
             .padding()
+            
+            Picker("", selection: $selectedPriority) {
+                ForEach(0..<priorities.count) {
+                    Text(priorities[$0])
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
             
             List {  
                 ForEach(0..<ns.todos.items.count, id: \.self) {
@@ -54,7 +64,7 @@ struct ContentView: View {
             return
         }
         
-        let todo = Todo(id: nil, item: todoItem, priority: 2, index: nil)
+        let todo = Todo(id: nil, item: todoItem, priority: selectedPriority, index: nil)
         
         NetworkService.shared.addTodo(todo: todo) { (todos) in
             todoItem = ""

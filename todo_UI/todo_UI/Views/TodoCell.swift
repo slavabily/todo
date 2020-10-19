@@ -20,11 +20,11 @@ struct TodoCell: View {
             
             switch priority {
             case 0: Circle()
-                .foregroundColor(.red)
+                .foregroundColor(.yellow)
             case 1: Circle()
                 .foregroundColor(.orange)
             default: Circle()
-                .foregroundColor(.yellow)
+                .foregroundColor(.red)
             }
             
             

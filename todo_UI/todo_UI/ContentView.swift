@@ -47,12 +47,28 @@ struct ContentView: View {
                     TodoCell(item: ns.todos.items[$0].item,
                              priority: ns.todos.items[$0].priority
                     )
-                }       
+                }
+                .onDelete(perform: deleteTodo)
             }
             .onAppear {
                 getTodos()
             }
         } 
+    }
+    
+    func deleteTodo(at offsets: IndexSet) {
+        
+        let f = Array<Int>(offsets)[0]
+            
+        var todo = ns.todos.items[f]
+        todo.index = f
+        
+        NetworkService.shared.deleteTodo(todo: todo) { (todos) in
+            ns.todos.items = todos.items
+        } onError: { (errorMessage) in
+            //show any error to user on DELETE
+            debugPrint(errorMessage)
+        }
     }
     
     func getTodos() {

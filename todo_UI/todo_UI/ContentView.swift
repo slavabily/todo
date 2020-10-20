@@ -18,13 +18,21 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("todo UI")
-                .font(.headline)
-                .padding()
+            HStack {
+                Text("todoREST")
+                    .font(.title)
+                    .bold()
+                    .frame(width: 290, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                      
+                Button(action: {
+                    addTodo()
+                }, label: {
+                    Image(systemName: "plus.circle")
+                        .scaleEffect(CGSize(width: 2.0, height: 2.0), anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                })
+            }
               
-            TextField("Enter Todo Item", text: $todoItem, onCommit:  {
-                addTodo()
-            })
+            TextField("Enter Todo Item", text: $todoItem)
             .padding()
             
             Picker("", selection: $selectedPriority) {

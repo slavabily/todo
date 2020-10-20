@@ -26,9 +26,6 @@ struct TodoCell: View {
             default: Circle()
                 .foregroundColor(.red)
             }
-            
-            
-            
         }
         
     }

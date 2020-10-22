@@ -36,4 +36,15 @@ app.delete('/delete', function (request, response) {
     }
 })
 
+app.put('/put', function(request, response) {
+    if (request.body && request.body.index && request.body.item !== "") {
+        todos.splice(request.body.index, 1);
+        todos.push(request.body);
+        console.log(todos);
+        response.send({ items: todos })
+    } else {
+        response.status(400).send({ message: "Todo item not found" })
+    }
+})
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

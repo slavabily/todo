@@ -19,6 +19,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
+                
+                EditButton()
+                
                 Text("todoREST")
                     .font(.title)
                     .bold()
@@ -28,7 +31,7 @@ struct ContentView: View {
                     addTodo()
                 }, label: {
                     Image(systemName: "plus.circle")
-                        .scaleEffect(CGSize(width: 2.0, height: 2.0), anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .scaleEffect(CGSize(width: 1.5, height: 1.5), anchor: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 })
             }
               

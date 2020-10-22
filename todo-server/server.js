@@ -28,7 +28,7 @@ app.post('/add', function (request, response) {
 
 app.delete('/delete', function (request, response) {
     if (request.body && request.body.index !== "") {
-        todos.splice(request.body.index, 1)
+        todos.splice(request.body.index, 1);
         console.log(todos);
         response.send({ items: todos });
     } else {

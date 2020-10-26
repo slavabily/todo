@@ -9,17 +9,29 @@ import SwiftUI
 
 struct PriorityView: View {
     
+    var color: Color {
+        switch priority {
+        case 0:
+            return Color.yellow
+        case 1:
+            return Color.orange
+        default:
+            return Color.red
+        }
+    }
+    
     var priority: Int
     
     var body: some View {
-        switch priority {
-        case 0:
-            Circle().foregroundColor(.yellow)
-        case 1:
-            Circle().foregroundColor(.orange)
-        default:
-            Circle().foregroundColor(.red)
-        }
+        
+        Circle()
+            .foregroundColor(color)
+            .scaleEffect(1.4)
+            .animation(
+                Animation.easeInOut(duration: 0.5)
+                    .repeatForever(autoreverses: true)
+            
+            )
     }
 }
 

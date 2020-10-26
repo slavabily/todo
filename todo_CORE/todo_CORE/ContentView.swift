@@ -23,7 +23,10 @@ struct ContentView: View {
                     
                     HStack {
                         Text("\(todo.item ?? "")")
-                            .padding()
+                            
+                            .frame(width: 300, alignment: .leading)
+                             
+                        Spacer()
                         
                         PriorityView(priority: Int(todo.priority))
                     }       

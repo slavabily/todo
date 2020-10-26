@@ -24,6 +24,7 @@ struct ContentView: View {
                         .padding()
                     
                 }
+                .onDelete(perform: deleteTodos(at:))
             }
             .navigationBarTitle(Text("todoREST"))
             .navigationBarItems(leading: EditButton(), trailing: Button(action: {
@@ -35,6 +36,14 @@ struct ContentView: View {
                 AddItemView().environment(\.managedObjectContext, moc)
             }
         }  
+    }
+    
+    func deleteTodos(at offsets: IndexSet) {
+        for offset in offsets {
+            let todo = todos[offset]
+            moc.delete(todo)
+        }
+        try? moc.save()
     }
 }
 

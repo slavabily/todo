@@ -20,9 +20,13 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(todos, id: \.self) { todo in
-                    Text("\(todo.item ?? "")")
-                        .padding()
                     
+                    HStack {
+                        Text("\(todo.item ?? "")")
+                            .padding()
+                        
+                        PriorityView(priority: Int(todo.priority))
+                    }       
                 }
                 .onDelete(perform: deleteTodos(at:))
             }
@@ -33,7 +37,7 @@ struct ContentView: View {
                 Image(systemName: "plus.circle")
             }))
             .sheet(isPresented: $showingAddScreen) {
-                AddItemView().environment(\.managedObjectContext, moc)
+                AddTodoView().environment(\.managedObjectContext, moc)
             }
         }  
     }

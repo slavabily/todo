@@ -15,6 +15,7 @@ struct AddTodoView: View {
     @State private var item = ""
     @State private var selectedPriority = 0
     @State private var showingAlert = false
+    @State private var duplicatedItem = false
     
     var todos: FetchedResults<Todo>
     
@@ -40,18 +41,19 @@ struct AddTodoView: View {
                     Button("Save") {
                         if !item.isEmpty {
                             for todo in todos {
-                                if item != todo.item {
-                                    let newTodo = Todo(context: moc)
-                                    newTodo.item = item
-                                    newTodo.priority = Int16(selectedPriority)
-                                    
-                                    try? moc.save()
-                                } else {
-                                    // show alert on duplicated todo item
+                                if item == todo.item {
+                                    // showing alert on duplicated todo item
+                                    showingAlert.toggle()
+                                    duplicatedItem.toggle()
                                     print("Duplicated Item...")
                                     return
                                 }
                             }
+                            let newTodo = Todo(context: moc)
+                            newTodo.item = item
+                            newTodo.priority = Int16(selectedPriority)
+                            
+                            try? moc.save()
                             
                         } else {
                             // show alert to user
@@ -64,7 +66,11 @@ struct AddTodoView: View {
                 }
             }
             .alert(isPresented: $showingAlert, content: {
-                Alert(title: Text("Item is not entered"), message: Text("Please, enter the item name"), dismissButton: .default(Text("OK")))
+                if duplicatedItem == false {
+                   return Alert(title: Text("Item is not entered"), message: Text("Please, enter the item name"), dismissButton: .default(Text("OK")))
+                } else {
+                  return  Alert(title: Text("Duplicated Item"), message: Text("Please, enter original"), dismissButton: .default(Text("OK")))
+                }   
             })
             .navigationBarTitle("Add todo")
         }

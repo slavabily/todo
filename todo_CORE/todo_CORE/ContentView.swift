@@ -32,10 +32,11 @@ struct ContentView: View {
                 .onDelete(perform: deleteTodos(at:))
             }
             .navigationBarTitle(Text("todoREST"))
-            .navigationBarItems(leading: EditButton(), trailing: Button(action: {
+            .navigationBarItems(trailing: Button(action: {
                 showingAddScreen.toggle()
             }, label: {
                 Image(systemName: "plus.circle")
+                    .scaleEffect(1.5)
             }))
             .sheet(isPresented: $showingAddScreen) {
                 AddTodoView(todos: todos).environment(\.managedObjectContext, moc)

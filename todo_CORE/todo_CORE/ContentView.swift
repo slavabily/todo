@@ -26,8 +26,6 @@ struct ContentView: View {
                             
                             .frame(width: 300, alignment: .leading)
                              
-                        Spacer()
-                        
                         PriorityView(priority: Int(todo.priority))
                     }       
                 }
@@ -40,7 +38,7 @@ struct ContentView: View {
                 Image(systemName: "plus.circle")
             }))
             .sheet(isPresented: $showingAddScreen) {
-                AddTodoView().environment(\.managedObjectContext, moc)
+                AddTodoView(todos: todos).environment(\.managedObjectContext, moc)
             }
         }  
     }

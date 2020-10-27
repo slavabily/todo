@@ -14,6 +14,9 @@ struct AddTodoView: View {
     
     @State private var item = ""
     @State private var selectedPriority = 0
+    @State private var showingAlert = false
+    
+    var todos: FetchedResults<Todo>
     
     var prioriries = ["Low", "Medium", "High"]
     
@@ -22,28 +25,37 @@ struct AddTodoView: View {
             Form {
                 Section {
                     TextField("Enter item name", text: $item)
-                    
-                    
                 }
                 
-                Picker("Select priority", selection: $selectedPriority) {
-                    ForEach(0..<prioriries.count) {
-                        Text(prioriries[$0])
+                Section(header: Text("Set priority")) {
+                    Picker("Select priority", selection: $selectedPriority) {
+                        ForEach(0..<prioriries.count) {
+                            Text(prioriries[$0])
+                        }
                     }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                
+                 
                 Section {
                     Button("Save") {
                         if !item.isEmpty {
-                            let newTodo = Todo(context: moc)
-                            newTodo.item = item
-                            newTodo.priority = Int16(selectedPriority)
+                            for todo in todos {
+                                if item != todo.item {
+                                    let newTodo = Todo(context: moc)
+                                    newTodo.item = item
+                                    newTodo.priority = Int16(selectedPriority)
+                                    
+                                    try? moc.save()
+                                } else {
+                                    // show alert on duplicated todo item
+                                    print("Duplicated Item...")
+                                    return
+                                }
+                            }
                             
-                            try? moc.save()
                         } else {
                             // show alert to user
-                            print("Item is empty...")
+                            showingAlert.toggle()
                             
                             return
                         }
@@ -51,13 +63,16 @@ struct AddTodoView: View {
                     }
                 }
             }
+            .alert(isPresented: $showingAlert, content: {
+                Alert(title: Text("Item is not entered"), message: Text("Please, enter the item name"), dismissButton: .default(Text("OK")))
+            })
+            .navigationBarTitle("Add todo")
         }
-        
     }
 }
 
-struct AddItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddTodoView()
-    }
-}
+//struct AddItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddTodoView(todos: )
+//    }
+//}

@@ -26,11 +26,11 @@ struct PriorityView: View {
         
         Circle()
             .foregroundColor(color)
-            .scaleEffect(1.4)
+            .scaledToFit()
             .animation(
-                Animation.easeInOut(duration: 0.5)
+                Animation.easeInOut(duration: 1)
                     .repeatForever(autoreverses: true)
-            
+
             )
     }
 }

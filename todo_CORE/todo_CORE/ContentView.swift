@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteTodos(at:))
             }
-            .navigationBarTitle(Text("todoREST"))
+            .navigationBarTitle(Text("todo_CORE"))
             .navigationBarItems(trailing: Button(action: {
                 showingAddScreen.toggle()
             }, label: {

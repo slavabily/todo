@@ -28,6 +28,7 @@ class NetworkService: ObservableObject {
             
             DispatchQueue.main.async {
                 if let error = error {
+                    debugPrint("Showing connection error")
                     onError(error.localizedDescription)
                     return
                 }

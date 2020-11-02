@@ -77,8 +77,11 @@ struct AddTodoView: View {
     }
 }
 
-//struct AddItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddTodoView(todos: )
-//    }
-//}
+struct AddItemView_Previews: PreviewProvider {
+    @FetchRequest(entity: Todo.entity(), sortDescriptors: [])
+    static var todos: FetchedResults<Todo>
+    
+    static var previews: some View {
+        AddTodoView(todos: todos)
+    }
+}

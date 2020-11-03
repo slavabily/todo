@@ -61,10 +61,10 @@ struct ContentView: View {
     
     func deleteTodo(at offsets: IndexSet) {
         
-        let f = Array<Int>(offsets)[0]
+        let i = Array<Int>(offsets)[0]
             
-        var todo = ns.todos.items[f]
-        todo.index = f
+        var todo = ns.todos.items[i]
+        todo.index = i
         
         NetworkService.shared.deleteTodo(todo: todo) { (todos) in
             ns.todos.items = todos.items

@@ -16,6 +16,10 @@
 		F981AB1C255043A500FB6711 /* todo_CR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F981AB1A255043A500FB6711 /* todo_CR.xcdatamodeld */; };
 		F981AB1F25504F8000FB6711 /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F981AB1E25504F8000FB6711 /* AddTodoView.swift */; };
 		F981AB2225504FFE00FB6711 /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F981AB2125504FFE00FB6711 /* PriorityView.swift */; };
+		F9A35C7B2551446C0039249D /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A35C7A2551446C0039249D /* APIError.swift */; };
+		F9A35C7E255144980039249D /* Todo_r.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A35C7D255144980039249D /* Todo_r.swift */; };
+		F9A35C83255145E30039249D /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A35C82255145E30039249D /* TodoCell.swift */; };
+		F9A35C88255146580039249D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A35C87255146580039249D /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		F981AB1B255043A500FB6711 /* todo_CR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = todo_CR.xcdatamodel; sourceTree = "<group>"; };
 		F981AB1E25504F8000FB6711 /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
 		F981AB2125504FFE00FB6711 /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		F9A35C7A2551446C0039249D /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F9A35C7D255144980039249D /* Todo_r.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo_r.swift; sourceTree = "<group>"; };
+		F9A35C82255145E30039249D /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		F9A35C87255146580039249D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,9 @@
 		F981AB04255006E700FB6711 /* todo_CR */ = {
 			isa = PBXGroup;
 			children = (
+				F9A35C862551462B0039249D /* Services */,
+				F9A35C81255145830039249D /* Views_r */,
+				F9A35C79255144390039249D /* Model_r */,
 				F981AB05255006E700FB6711 /* AppDelegate.swift */,
 				F981AB07255006E700FB6711 /* SceneDelegate.swift */,
 				F981AB09255006E700FB6711 /* ContentView.swift */,
@@ -82,6 +93,31 @@
 				F981AB0E255006F200FB6711 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9A35C79255144390039249D /* Model_r */ = {
+			isa = PBXGroup;
+			children = (
+				F9A35C7A2551446C0039249D /* APIError.swift */,
+				F9A35C7D255144980039249D /* Todo_r.swift */,
+			);
+			path = Model_r;
+			sourceTree = "<group>";
+		};
+		F9A35C81255145830039249D /* Views_r */ = {
+			isa = PBXGroup;
+			children = (
+				F9A35C82255145E30039249D /* TodoCell.swift */,
+			);
+			path = Views_r;
+			sourceTree = "<group>";
+		};
+		F9A35C862551462B0039249D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F9A35C87255146580039249D /* NetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,12 +190,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A35C88255146580039249D /* NetworkService.swift in Sources */,
 				F981AB06255006E700FB6711 /* AppDelegate.swift in Sources */,
 				F981AB08255006E700FB6711 /* SceneDelegate.swift in Sources */,
 				F981AB2225504FFE00FB6711 /* PriorityView.swift in Sources */,
+				F9A35C7E255144980039249D /* Todo_r.swift in Sources */,
+				F9A35C83255145E30039249D /* TodoCell.swift in Sources */,
 				F981AB1C255043A500FB6711 /* todo_CR.xcdatamodeld in Sources */,
 				F981AB0A255006E700FB6711 /* ContentView.swift in Sources */,
 				F981AB1F25504F8000FB6711 /* AddTodoView.swift in Sources */,
+				F9A35C7B2551446C0039249D /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,22 +17,40 @@ struct ContentView: View {
     
     @State private var showingAddScreen = false
     
+    // For REST API
+    
+    @ObservedObject var ns = NetworkService()
+    
+    @State private var isServerAvailable = false
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(todos, id: \.self) { todo in
-                    
-                    HStack {
-                        Text("\(todo.item ?? "")")
-                            
-                            .frame(width: 300, alignment: .leading)
-                             
-                        PriorityView(priority: Int(todo.priority))
+                if isServerAvailable {
+                    ForEach(0..<ns.todos.items.count, id: \.self) {
+                        TodoCell(item: ns.todos.items[$0].item,
+                                 priority: ns.todos.items[$0].priority
+                        )
                     }
+//                    .onDelete(perform: deleteTodo)
+                } else {
+                    ForEach(todos, id: \.self) { todo in
+                        
+                        HStack {
+                            Text("\(todo.item ?? "")")
+                                
+                                .frame(width: 300, alignment: .leading)
+                                 
+                            PriorityView(priority: Int(todo.priority))
+                        }
+                    }
+                    .onDelete(perform: deleteTodos(at:))
                 }
-                .onDelete(perform: deleteTodos(at:))
             }
-            .navigationBarTitle(Text("todo_CORE"))
+            .onAppear {
+                getTodos()
+            }
+            .navigationBarTitle(Text("todo_CR"))
             .navigationBarItems(trailing: Button(action: {
                 showingAddScreen.toggle()
             }, label: {
@@ -45,6 +63,17 @@ struct ContentView: View {
         }
     }
     
+    func getTodos() {
+        NetworkService.shared.getTodos { (todos) in
+            print(todos.items)
+            self.ns.todos.items = todos.items
+        } onError: { (errorMessage) in
+            //show error to user
+            debugPrint(errorMessage)
+        }
+    }
+    
+    // CoreData deletion
     func deleteTodos(at offsets: IndexSet) {
         for offset in offsets {
             let todo = todos[offset]
@@ -54,8 +83,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

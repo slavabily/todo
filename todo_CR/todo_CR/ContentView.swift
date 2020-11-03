@@ -65,6 +65,9 @@ struct ContentView: View {
     
     func getTodos() {
         NetworkService.shared.getTodos { (todos) in
+            
+            isServerAvailable.toggle()
+            
             print(todos.items)
             self.ns.todos.items = todos.items
         } onError: { (errorMessage) in

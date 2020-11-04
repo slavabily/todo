@@ -65,11 +65,23 @@ struct ContentView: View {
     
     func getTodos() {
         NetworkService.shared.getTodos { (todos) in
-            
+            // address UI to display results loaded from server
             isServerAvailable.toggle()
             
             print(todos.items)
             self.ns.todos.items = todos.items
+            
+            //saving to CoreData
+        
+            for todo in todos.items {
+                let newTodo = Todo(context: moc)
+                newTodo.item = todo.item
+                newTodo.priority = Int16(todo.priority)
+                
+                try? moc.save()
+                debugPrint("Todo saved")
+            }
+            
         } onError: { (errorMessage) in
             //show error to user
             debugPrint(errorMessage)

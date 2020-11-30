@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>893621652660-cn0ifp1a0cmnr8kt6vsm8pllfv2np4ln.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.893621652660-cn0ifp1a0cmnr8kt6vsm8pllfv2np4ln</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCSbwrBYgA3Jq-W6zmSYX_x-9DFDKGbFfA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>893621652660</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>slavabily.todo-Fire</string>
+	<key>PROJECT_ID</key>
+	<string>todofire-eea1e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>todofire-eea1e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:893621652660:ios:8432d545099649f764dbe1</string>
+	<key>DATABASE_URL</key>
+	<string>https://todofire-eea1e.firebaseio.com</string>
+</dict>
+</plist>

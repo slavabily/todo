@@ -15,6 +15,10 @@
 		F9106E5225751C1300D02E7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9106E5125751C1300D02E7C /* Preview Assets.xcassets */; };
 		F9106E5525751C1300D02E7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9106E5325751C1300D02E7C /* LaunchScreen.storyboard */; };
 		F9106E5E257528FD00D02E7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9106E5D257528FD00D02E7C /* GoogleService-Info.plist */; };
+		F9106E722575362100D02E7C /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9106E712575362100D02E7C /* AddTodoView.swift */; };
+		F9106E752575366500D02E7C /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9106E742575366500D02E7C /* PriorityView.swift */; };
+		F9106E79257537E300D02E7C /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9106E78257537E300D02E7C /* TodoItem.swift */; };
+		F9106E7D257562C900D02E7C /* TodoItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9106E7C257562C900D02E7C /* TodoItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		F9106E5425751C1300D02E7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9106E5625751C1300D02E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9106E5D257528FD00D02E7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F9106E712575362100D02E7C /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
+		F9106E742575366500D02E7C /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		F9106E78257537E300D02E7C /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		F9106E7C257562C900D02E7C /* TodoItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +58,6 @@
 				A38B3640BA2E9C72A399C5B9 /* Pods-todo_Fire.debug.xcconfig */,
 				5E03FA17F9947D3457AC2D4F /* Pods-todo_Fire.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,7 +92,11 @@
 			children = (
 				F9106E4825751C0B00D02E7C /* AppDelegate.swift */,
 				F9106E4A25751C0B00D02E7C /* SceneDelegate.swift */,
+				F9106E772575379D00D02E7C /* Models */,
+				F9106E7C257562C900D02E7C /* TodoItems.swift */,
 				F9106E4C25751C0B00D02E7C /* ContentView.swift */,
+				F9106E712575362100D02E7C /* AddTodoView.swift */,
+				F9106E742575366500D02E7C /* PriorityView.swift */,
 				F9106E4E25751C1300D02E7C /* Assets.xcassets */,
 				F9106E5325751C1300D02E7C /* LaunchScreen.storyboard */,
 				F9106E5625751C1300D02E7C /* Info.plist */,
@@ -101,6 +112,14 @@
 				F9106E5125751C1300D02E7C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9106E772575379D00D02E7C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9106E78257537E300D02E7C /* TodoItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +221,11 @@
 			files = (
 				F9106E4925751C0B00D02E7C /* AppDelegate.swift in Sources */,
 				F9106E4B25751C0B00D02E7C /* SceneDelegate.swift in Sources */,
+				F9106E752575366500D02E7C /* PriorityView.swift in Sources */,
+				F9106E722575362100D02E7C /* AddTodoView.swift in Sources */,
+				F9106E79257537E300D02E7C /* TodoItem.swift in Sources */,
 				F9106E4D25751C0B00D02E7C /* ContentView.swift in Sources */,
+				F9106E7D257562C900D02E7C /* TodoItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

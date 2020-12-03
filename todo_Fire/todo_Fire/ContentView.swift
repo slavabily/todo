@@ -26,7 +26,7 @@ struct ContentView: View {
                             
                             .frame(width: 300, alignment: .leading)
                              
-//                        PriorityView(priority: Int(todo.priority))
+                        PriorityView(priority: Int(todo.priority))
                     }
                 }
 //                .onDelete(perform: deleteTodos(at:))

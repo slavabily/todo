@@ -50,7 +50,7 @@ struct AddTodoView: View {
                                     return
                                 }
                             }
-                            let todoItem = TodoItem(name: item)
+                            let todoItem = TodoItem(name: item, priority: selectedPriority)
                             
                             let todoItemRef = ref.child(item.lowercased())
                             

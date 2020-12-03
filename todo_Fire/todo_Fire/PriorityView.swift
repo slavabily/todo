@@ -14,11 +14,11 @@ struct PriorityView: View {
     var color: Color {
         switch priority {
         case 0:
-            return Color.yellow
+            return Color.red
         case 1:
             return Color.orange
         default:
-            return Color.red
+            return Color.yellow
         }
     }
     

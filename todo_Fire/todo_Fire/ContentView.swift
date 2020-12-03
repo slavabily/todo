@@ -29,7 +29,7 @@ struct ContentView: View {
                         PriorityView(priority: Int(todo.priority))
                     }
                 }
-//                .onDelete(perform: deleteTodos(at:))
+                .onDelete(perform: deleteItems(at:))
             }
             .onAppear {
                 loadItems()
@@ -47,8 +47,15 @@ struct ContentView: View {
         }
     }
     
+    func deleteItems(at offsets: IndexSet) {
+        for offset in offsets {
+            let todoItem = todoItems.items[offset]
+            todoItem.ref?.removeValue()
+        }
+    }
+    
     func loadItems() {
-        ref.observe(.value) { (snapshot) in
+        ref.queryOrdered(byChild: "priority").observe(.value) { (snapshot) in
             print(snapshot.value as Any)
             var newItems: [TodoItem] = []
 
@@ -63,8 +70,6 @@ struct ContentView: View {
             print(todoItems.items)
         }
     }
-    
- 
 }
 
 

@@ -20,7 +20,7 @@ struct AddTodoView: View {
     @State private var showingAlert = false
     @State private var duplicatedItem = false
     
-    var prioriries = ["Low", "Medium", "High"]
+    var prioriries = ["High", "Medium", "Low"]
     
     var body: some View {
         NavigationView {
@@ -77,11 +77,9 @@ struct AddTodoView: View {
     }
 }
 
-//struct AddItemView_Previews: PreviewProvider {
-//    @FetchRequest(entity: Todo.entity(), sortDescriptors: [])
-//    static var todos: FetchedResults<Todo>
-//    
-//    static var previews: some View {
-//        AddTodoView(todos: todos)
-//    }
-//}
+struct AddItemView_Previews: PreviewProvider {
+     
+    static var previews: some View {
+        AddTodoView()
+    }
+}

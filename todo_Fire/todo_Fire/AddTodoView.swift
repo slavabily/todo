@@ -10,6 +10,8 @@ import Firebase
 
 struct AddTodoView: View {
     
+    let ref = Database.database().reference(withPath: "todo-items")
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var todoItems: TodoItems
     
@@ -38,29 +40,28 @@ struct AddTodoView: View {
                  
                 Section {
                     Button("Save") {
-//                        if !item.isEmpty {
-//                            for todo in todos {
-//                                if item == todo.item {
-//                                    // showing alert on duplicated todo item
-//                                    showingAlert.toggle()
-//                                    duplicatedItem.toggle()
-//                                    print("Duplicated Item...")
-//                                    return
-//                                }
-//                            }
-//                            let newTodo = Todo(context: moc)
-//                            newTodo.item = item
-//                            newTodo.priority = Int16(selectedPriority)
-//
-//                            try? moc.save()
-//
-//                        } else {
-//                            // show alert to user
-//                            showingAlert.toggle()
-//
-//                            return
-//                        }
-//                        presentationMode.wrappedValue.dismiss()
+                        if !item.isEmpty {
+                            for todo in todoItems.items {
+                                if item == todo.name {
+                                    // showing alert on duplicated todo item
+                                    showingAlert.toggle()
+                                    duplicatedItem.toggle()
+                                    print("Duplicated Item...")
+                                    return
+                                }
+                            }
+                            let todoItem = TodoItem(name: item)
+                            
+                            let todoItemRef = ref.child(item.lowercased())
+                            
+                            todoItemRef.setValue(todoItem.toAnyObject())
+                        } else {
+                            // show alert to user
+                            showingAlert.toggle()
+
+                            return
+                        }
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }

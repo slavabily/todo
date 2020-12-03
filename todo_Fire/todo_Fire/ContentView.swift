@@ -41,22 +41,26 @@ struct ContentView: View {
                 Image(systemName: "plus.circle")
                     .scaleEffect(1.5)
             }))
-//            .sheet(isPresented: $showingAddScreen) {
-//                AddTodoView(todos: todos).environment(\.managedObjectContext, moc)
-//            }
+            .sheet(isPresented: $showingAddScreen) {
+                AddTodoView().environmentObject(todoItems)
+            }
         }
     }
     
     func loadItems() {
         ref.observe(.value) { (snapshot) in
-            var newItems = [TodoItem]()
-            
+            print(snapshot.value as Any)
+            var newItems: [TodoItem] = []
+
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot, let todoItem = TodoItem(snapshot: snapshot) {
                     newItems.append(todoItem)
+                } else {
+                    print("Something goes wrong...")
                 }
             }
             todoItems.items = newItems
+            print(todoItems.items)
         }
     }
     

@@ -32,7 +32,7 @@ struct TodoItem: Hashable {
     
     func toAnyObject() -> Any {
         return [
-            "name:": name
+            "name": name
         ]
     }
 }

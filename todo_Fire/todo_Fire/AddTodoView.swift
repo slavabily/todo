@@ -40,28 +40,7 @@ struct AddTodoView: View {
                  
                 Section {
                     Button("Save") {
-                        if !item.isEmpty {
-                            for todo in todoItems.items {
-                                if item == todo.name {
-                                    // showing alert on duplicated todo item
-                                    showingAlert.toggle()
-                                    duplicatedItem.toggle()
-                                    print("Duplicated Item...")
-                                    return
-                                }
-                            }
-                            let todoItem = TodoItem(name: item, priority: selectedPriority)
-                            
-                            let todoItemRef = ref.child(item.lowercased())
-                            
-                            todoItemRef.setValue(todoItem.toAnyObject())
-                        } else {
-                            // show alert to user
-                            showingAlert.toggle()
-
-                            return
-                        }
-                        presentationMode.wrappedValue.dismiss()
+                        save()
                     }
                 }
             }
@@ -74,6 +53,31 @@ struct AddTodoView: View {
             })
             .navigationBarTitle("Add todo")
         }
+    }
+    
+    func save() {
+        if !item.isEmpty {
+            for todo in todoItems.items {
+                if item == todo.name {
+                    // showing alert on duplicated todo item
+                    showingAlert.toggle()
+                    duplicatedItem.toggle()
+                    print("Duplicated Item...")
+                    return
+                }
+            }
+            let todoItem = TodoItem(name: item, priority: selectedPriority)
+            
+            let todoItemRef = ref.child(item.lowercased())
+            
+            todoItemRef.setValue(todoItem.toAnyObject())
+        } else {
+            // show alert to user
+            showingAlert.toggle()
+
+            return
+        }
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
